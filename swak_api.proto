@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+enum Platform {
+  WEB     = 0;
+  IOS     = 1;
+  ANDROID = 2;
+}
+
+message LoginRequest {
+  string   username = 1;
+  string   password = 2;
+  Platform platform = 3;
+}
