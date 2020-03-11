@@ -1,13 +1,28 @@
 syntax = "proto3";
 
-enum Platform {
-  WEB     = 0;
-  IOS     = 1;
-  ANDROID = 2;
+
+message Login {
+  string  username = 1;
+  string  password = 2;
+  // platform_hint indicates login platform, currently "web", "ios", or "android".
+  string  platform_hint = 3;
 }
 
-message LoginRequest {
-  string   username = 1;
-  string   password = 2;
-  Platform platform = 3;
+message LoginResponse {
+  // response_code 0 means login succeeded, other values indicate failure.
+  int32 response_code = 1;
+  // api_key is returned if login succeeded. opaque from the client perspective.
+  string api_key      = 2;
 }
+
+message Ping {
+  string api_key = 1;
+}
+
+message PingResponse {
+  // response_code 0 means api_key is valid, other values indicate it is not.
+  int32 response_code = 1;
+}
+
+
+
